@@ -7,4 +7,4 @@ class Author(db.Model):
     books = db.relationship('Book', backref='author', lazy=True)
 
     def __repr__(self) -> str:
-        return f'<Author {self.name}'
+        return f'<Author {self.name}>'
