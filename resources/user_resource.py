@@ -9,6 +9,7 @@ class UserResource(Resource):
         self.parser = reqparse.RequestParser()
         self.parser.add_argument('name', type=str, required=True, help='Name is required')
         self.parser.add_argument('email', type=str, required=True, help='Email is required')
+        self.parser.add_argument('password', type=str, required=False, help='Password is optional')
 
     @jwt_required()
     def get(self, user_id=None):
@@ -20,7 +21,6 @@ class UserResource(Resource):
         users = UserService.get_all_users()
         return [{'id': user.id, 'name': user.name, 'email': user.email} for user in users], 200
     
-    @jwt_required()
     def post(self):
         args = self.parser.parse_args()
         user = UserService.create_user(args)

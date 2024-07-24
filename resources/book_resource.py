@@ -23,7 +23,7 @@ class BookResource(Resource):
         return [{'id': book.id, 'title': book.title, 'author_id': book.author_id, 'user_id': book.user_id} for book in books], 200
     
     @jwt_required()
-    def post(self, book_id):
+    def post(self):
         args = self.parser.parse_args()
         book = BookService.create_book(args)
         return {'id': book.id, 'title': book.title, 'author_id': book.author_id, 'user_id': book.user_id}, 201

@@ -8,4 +8,4 @@ class Book(db.Model):
 
     
     def __repr__(self) -> str:
-        return f'<Book {self.title}'
+        return f'<Book {self.title}>'
